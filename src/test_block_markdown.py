@@ -51,5 +51,15 @@ This is the same paragraph on a new line
             )
 
 
+        def test_markdown_to_blocks_with_no_blocks(self):
+            md = """
+"""
+            blocks = markdown_to_blocks(md)
+            self.assertEqual(
+                blocks,
+                [],
+            )
+
+
 if __name__ == "__main__":
     unittest.main()
