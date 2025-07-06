@@ -1,11 +1,18 @@
-from textnode import TextNode, TextType
+import os
+import shutil
+
+from copystatic import copy_files_recursive
+
+
+dir_path_static = "./static"
+dir_path_public = "./public"
+
 
 def main():
-    # Testing
-    text = TextNode("Ovo je kod", TextType.LINK, "https://www.boot.dev")
-    text1 = TextNode("Ovo je kod", TextType.IMAGE, "https://www.boot.dev")
-    print(text)
-    print(TextNode.__eq__(text, text1))
+    if os.path.exists(dir_path_public):
+        shutil.rmtree(dir_path_public)
+
+    copy_files_recursive(dir_path_static, dir_path_public)
 
 if __name__ == "__main__":
     main()
